@@ -1,15 +1,18 @@
-from flask import Flask,render_template,request
+#Flask
+
+from flask import Flask, request,render_template
 
 app = Flask(__name__)
 
 @app.route("/",methods=["GET","POST"])
 def index():
-    return(render_template("index.html"))
+    return (render_template("index.html"))
 
-@app.route("/prediction",methods=["GET","POST"])
-def prediction():
-    q = float(request.form.get("q"))
-    return(render_template("prediction.html", r=(-50.6*q)+90.2))
+@app.route("/main",methods=["GET","POST"])
+def main():
+    q = request.form.get("q")
+    print(q)
+    return (render_template("main.html"))
 
 if __name__ == "__main__":
     app.run()
